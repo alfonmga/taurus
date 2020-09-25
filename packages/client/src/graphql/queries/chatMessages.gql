@@ -1,0 +1,17 @@
+query ChatMessages($dto: PaginationDTO!) {
+  chatMessages(dto: $dto) {
+    limit
+    offset
+    totalCount
+    data {
+      id
+      message
+      user {
+        avatarUrl
+        displayName
+        username
+      }
+      createdAt
+    }
+  }
+}

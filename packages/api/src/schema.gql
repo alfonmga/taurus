@@ -1,0 +1,73 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ChatMessage {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  user: User!
+  message: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  username: String!
+  email: String!
+  avatarUrl: String!
+  displayName: String!
+}
+
+type UserProfileType {
+  username: String!
+  avatarUrl: String!
+  displayName: String!
+}
+
+type InputErrorFieldType {
+  path: String!
+  message: String!
+}
+
+type PaginatedChatMessagesDTO {
+  data: [ChatMessage!]!
+  offset: Int!
+  limit: Int!
+  totalCount: Int!
+}
+
+type Query {
+  profile: UserProfileType!
+  chatMessages(dto: PaginationDTO!): PaginatedChatMessagesDTO!
+}
+
+input PaginationDTO {
+  offset: Int = 0
+  limit: Int = 4
+}
+
+type Mutation {
+  createChatMessage(dto: CreateChatMessageDTO!): CreateChatMessageUnion!
+}
+
+union CreateChatMessageUnion = SuccessfulCreatedType | InputErrorType
+
+type SuccessfulCreatedType {
+  success: Boolean!
+  id: ID!
+}
+
+type InputErrorType {
+  validationErrors: [InputErrorFieldType!]!
+}
+
+input CreateChatMessageDTO {
+  message: String!
+}

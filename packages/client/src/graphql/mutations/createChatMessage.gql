@@ -1,0 +1,14 @@
+mutation CreateChatMessage($dto: CreateChatMessageDTO!) {
+  createChatMessage(dto: $dto) {
+    __typename
+    ... on SuccessfulCreatedType {
+      id
+    }
+    ... on InputErrorType {
+      validationErrors {
+        path
+        message
+      }
+    }
+  }
+}

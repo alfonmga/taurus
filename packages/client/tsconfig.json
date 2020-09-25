@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "types": ["node", "jest"],
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~config": ["config"],
+      "~store": ["store"],
+      "~generated/*": ["generated/*"],
+      "~components/*": ["components/*"],
+      "~utils/*": ["utils/*"],
+      "~services/*": ["services/*"],
+      "~apis/*": ["apis/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.jsx", "next-env.d.ts"],
+  "exclude": [".next", "node_modules"]
+}

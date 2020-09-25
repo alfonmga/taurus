@@ -1,0 +1,22 @@
+query Dashboard {
+  profile {
+    username
+    avatarUrl
+    displayName
+  }
+  prefetchChatMessages: chatMessages(dto: { offset: 0, limit: 4 }) {
+    limit
+    offset
+    totalCount
+    data {
+      id
+      message
+      user {
+        avatarUrl
+        displayName
+        username
+      }
+      createdAt
+    }
+  }
+}

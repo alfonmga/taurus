@@ -1,0 +1,25 @@
+overwrite: true
+schema: 'http://127.0.0.1:3001/graphql'
+documents: 'src/graphql/**/*.gql'
+generates:
+  src/generated/graphql-hooks.ts:
+    plugins:
+      - add:
+          content: '/*eslint-disable */'
+      - time:
+          message: 'The file generated on: '
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      namingConvention:
+        typeNames: keep
+        enumValues: keep
+      skipTypename: true
+      hooksImportFrom: '@apollo/react-hooks'
+      withHooks: true
+      withComponent: false
+      withHOC: false
+hooks:
+  afterAllFileWrite:
+    - prettier --write

@@ -1,0 +1,7 @@
+query UserProfile {
+  profile {
+    username
+    avatarUrl
+    displayName
+  }
+}
