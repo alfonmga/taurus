@@ -10,7 +10,7 @@ import { useChatMessagesQuery } from '~generated/graphql-hooks'
 
 export const CHAT_MESSAGES_PAGE_LIMIT = 4
 
-const MOCK_DATA: any[] = [
+/* const MOCK_DATA: any[] = [
   {
     id: '_4',
     message: 'Hi 👋🏻',
@@ -48,7 +48,7 @@ const MOCK_DATA: any[] = [
       avatarUrl: 'https://avatars1.githubusercontent.com/u/9363272?v=4',
     },
   },
-]
+] */
 
 function ChatMessages(): JSX.Element {
   const userState = useStoreState(state => state.user)
@@ -89,7 +89,7 @@ function ChatMessages(): JSX.Element {
           </Box>
         )}
 
-        {MOCK_DATA.map(message => (
+        {chatMessages.map(message => (
           <ChatMessage
             key={message.id}
             avatarUrl={message.user.avatarUrl}
